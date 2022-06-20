@@ -28,7 +28,7 @@ namespace Pokedex.Model.Utils
 		private void LoadJson(string jsonContent)
         {
 			jsonContent = jsonContent.Trim();
-            Dictionary = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(jsonContent) ?? new Dictionary<string, Dictionary<string, string>>(StringComparer.InvariantCultureIgnoreCase);
+            Dictionary = new Dictionary<string, Dictionary<string, string>>(System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(jsonContent) ?? new Dictionary<string, Dictionary<string, string>>(), StringComparer.OrdinalIgnoreCase);
         }
 
         public string koKR(string keyCode, params string[] replacements)

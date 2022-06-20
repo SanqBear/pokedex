@@ -16,4 +16,9 @@
     <Folder Include="Resources\" />
     <Folder Include="Utils\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="Resources\Translation.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
