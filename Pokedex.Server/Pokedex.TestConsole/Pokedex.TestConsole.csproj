@@ -1,19 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Definitions\" />
-    <None Remove="Resources\" />
-    <None Remove="Utils\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Definitions\" />
-    <Folder Include="Resources\" />
-    <Folder Include="Utils\" />
+    <ProjectReference Include="..\Pokedex.Model\Pokedex.Model.csproj" />
   </ItemGroup>
 </Project>
