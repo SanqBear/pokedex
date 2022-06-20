@@ -1,17 +1,13 @@
-﻿using System;
-namespace Pokedex.Model.Definitions
+﻿namespace Pokedex.Model.Definitions
 {
-	public class Pokemon
-	{
-		public Pokemon()
-		{
-		}
+    public class Pokemon
+    {
+        public Pokemon()
+        {
+        }
 
+        public int Id { get; set; }
 
-		public int Id { get; set; }
-
-		public string Name { get; set; } = string.Empty;
-
-	}
+        public string Name { get; set; } = string.Empty;
+    }
 }
-
