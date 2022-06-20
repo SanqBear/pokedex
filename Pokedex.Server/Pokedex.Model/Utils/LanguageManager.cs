@@ -10,6 +10,7 @@
 
         public static IReadOnlyDictionary<string, Dictionary<string, string>> Dictionary { get; set; } = new Dictionary<string, Dictionary<string, string>>();
         public static LanguageManager Instance => _instance.Value;
+        public bool IsLoaded => Dictionary.Any();
 
         private LanguageManager()
         {
