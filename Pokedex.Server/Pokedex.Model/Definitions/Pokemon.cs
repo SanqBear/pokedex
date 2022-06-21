@@ -8,9 +8,10 @@ namespace Pokedex.Model.Definitions
         {
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString("N");
 
-        public string Gen { get; set; } = string.Empty;
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? Gen { get; set; } = null;
 
         private string _name = string.Empty;
 

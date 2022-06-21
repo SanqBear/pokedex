@@ -8,7 +8,13 @@ namespace Pokedex.Model.Definitions
         {
         }
 
-        public int Id { get; set; }
+        public Attribute(string name, string desc)
+        {
+            _name = name;
+            _desc = desc;
+        }
+
+        public string Id { get; set; } = Guid.NewGuid().ToString("N");
 
         private string _name = string.Empty;
 

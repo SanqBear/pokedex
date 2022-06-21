@@ -14,9 +14,10 @@ namespace Pokedex.Model.Definitions
             _desc = desc;
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString("N");
 
-        public string Gen { get; set; } = string.Empty;
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? Gen { get; set; } = null;
 
         public int Pp { get; set; }
 
