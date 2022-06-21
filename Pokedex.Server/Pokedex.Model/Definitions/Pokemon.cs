@@ -1,5 +1,4 @@
-﻿using System.Data;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace Pokedex.Model.Definitions
 {
@@ -8,7 +7,7 @@ namespace Pokedex.Model.Definitions
         public Pokemon()
         {
         }
-        
+
         public int Id { get; set; }
 
         public string Gen { get; set; } = string.Empty;

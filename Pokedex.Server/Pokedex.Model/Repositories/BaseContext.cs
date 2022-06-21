@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -16,25 +15,25 @@ namespace Pokedex.Model.Repositories
 
         protected async Task<DataSet> ExecuteDataSetAsync(string query, Hashtable? parameters = null, CommandType commandType = CommandType.StoredProcedure)
         {
-            if(_connection.State != ConnectionState.Open)
+            if (_connection.State != ConnectionState.Open)
             {
                 await _connection.OpenAsync();
             }
 
-            using(var cmd = _connection.CreateCommand())
+            using (var cmd = _connection.CreateCommand())
             {
                 cmd.CommandType = commandType;
                 cmd.CommandText = query;
 
-                if(parameters != null)
+                if (parameters != null)
                 {
-                    foreach(string key in parameters.Keys)
+                    foreach (string key in parameters.Keys)
                     {
                         cmd.Parameters.AddWithValue(key, parameters[key]);
                     }
                 }
 
-                using(SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                 {
                     DataSet ds = new DataSet();
                     adapter.Fill(ds);
@@ -45,12 +44,12 @@ namespace Pokedex.Model.Repositories
 
         protected async Task<bool> ExecuteQueryAsync(string query, Hashtable? parameters = null, CommandType commandType = CommandType.StoredProcedure)
         {
-            if(_connection.State != ConnectionState.Open)
+            if (_connection.State != ConnectionState.Open)
             {
                 await _connection.OpenAsync();
             }
 
-            using(var cmd = _connection.CreateCommand())
+            using (var cmd = _connection.CreateCommand())
             {
                 cmd.CommandType = commandType;
                 cmd.CommandText = query;
@@ -70,7 +69,7 @@ namespace Pokedex.Model.Repositories
 
         public async ValueTask DisposeAsync()
         {
-            if(_connection.State != ConnectionState.Closed)
+            if (_connection.State != ConnectionState.Closed)
             {
                 await _connection.CloseAsync();
             }
@@ -79,4 +78,3 @@ namespace Pokedex.Model.Repositories
         }
     }
 }
-
