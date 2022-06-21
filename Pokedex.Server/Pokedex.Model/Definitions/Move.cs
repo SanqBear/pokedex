@@ -50,7 +50,10 @@ namespace Pokedex.Model.Definitions
         }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public int? Level { get; set; } = null;
+        public MoveEarnType? EarnType { get; set; } = null;
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? EarnDesc { get; set; } = null;
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public IList<Pokemon>? Pokemons { get; set; } = null;

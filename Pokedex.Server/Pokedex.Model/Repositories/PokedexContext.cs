@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Pokedex.Model.Definitions;
 
 namespace Pokedex.Model.Repositories
 {
@@ -39,7 +40,7 @@ namespace Pokedex.Model.Repositories
             return await ExecuteQueryAsync("[dbo].[up_INSERT_tbPokemonStatus]", parameters);
         }
 
-        public async Task<bool> InsertAttribute(string attributeId, string name, string desc)
+        public async Task<bool> InsertAttributeAsync(string attributeId, string name, string desc)
         {
             var parameters = new Hashtable();
 
@@ -50,7 +51,7 @@ namespace Pokedex.Model.Repositories
             return await ExecuteQueryAsync("[dbo].[up_INSERT_tbAttribute]", parameters);
         }
 
-        public async Task<bool> InsertMove(string moveId, string gen, string name, string desc, int pp, int power)
+        public async Task<bool> InsertMoveAsync(string moveId, string gen, string name, string desc, int pp, int power)
         {
             var parameters = new Hashtable();
 
@@ -64,7 +65,7 @@ namespace Pokedex.Model.Repositories
             return await ExecuteQueryAsync("[dbo].[up_INSERT_tbMove]", parameters);
         }
 
-        public async Task<bool> InsertTag(string tagId, string name, string desc)
+        public async Task<bool> InsertTagAsync(string tagId, string name, string desc)
         {
             var parameters = new Hashtable();
 
@@ -73,6 +74,19 @@ namespace Pokedex.Model.Repositories
             parameters.Add("Desc", desc);
 
             return await ExecuteQueryAsync("[dbo].[up_INSERT_tbTag]", parameters);
+        }
+
+        public async Task<bool> InsertMapPokemonMoveAsync(string pokemonId, string moveId, string gen, MoveEarnType earnType, string earnDesc)
+        {
+            var parameters = new Hashtable();
+
+            parameters.Add("PokemonId", pokemonId);
+            parameters.Add("MoveId", moveId);
+            parameters.Add("Gen", gen);
+            parameters.Add("EarnType", earnType.ToString());
+            parameters.Add("Desc", earnDesc);
+
+            return await ExecuteQueryAsync("[dbo].[up_INSERT_mapPokemonMove]", parameters);
         }
 
         #endregion
