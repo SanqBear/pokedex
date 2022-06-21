@@ -8,12 +8,7 @@ namespace Pokedex.Model.Definitions
         public Pokemon()
         {
         }
-
-        public Pokemon(DataRow row)
-        {
-
-        }
-
+        
         public int Id { get; set; }
 
         public string Gen { get; set; } = string.Empty;
@@ -40,10 +35,16 @@ namespace Pokedex.Model.Definitions
             }
         }
 
-
-        public IList<Attribute> Attributes { get; set; } = new List<Attribute>();
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public IList<Attribute>? Attributes { get; set; } = null;
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Status? Status { get; set; } = null;
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public IList<Tag>? Tags { get; set; } = null;
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public IList<Move>? Moves { get; set; } = null;
     }
 }

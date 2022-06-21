@@ -10,15 +10,21 @@
     <None Remove="Definitions\" />
     <None Remove="Resources\" />
     <None Remove="Utils\" />
+    <None Remove="Repositories\" />
+    <None Remove="System.Data.SqlClient" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Definitions\" />
     <Folder Include="Resources\" />
     <Folder Include="Utils\" />
+    <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Resources\Translation.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 </Project>
