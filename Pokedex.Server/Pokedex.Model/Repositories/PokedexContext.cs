@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using Pokedex.Model.Definitions;
+﻿using Pokedex.Model.Definitions;
+using System.Collections;
 
 namespace Pokedex.Model.Repositories
 {
@@ -9,7 +9,6 @@ namespace Pokedex.Model.Repositories
         {
         }
 
-        
         #region INSERT
 
         public async Task<bool> InsertMapPokemonAttributeAsync(string pokemonId, string attributeId, string gen, bool isHidden)
@@ -89,6 +88,6 @@ namespace Pokedex.Model.Repositories
             return await ExecuteQueryAsync("[dbo].[up_INSERT_mapPokemonMove]", parameters);
         }
 
-        #endregion
+        #endregion INSERT
     }
 }

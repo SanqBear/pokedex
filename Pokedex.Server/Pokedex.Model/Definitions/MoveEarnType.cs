@@ -1,13 +1,11 @@
-﻿using System;
-namespace Pokedex.Model.Definitions
+﻿namespace Pokedex.Model.Definitions
 {
-	public enum MoveEarnType
-	{
-		Unknown,
-		LevelUp,
-		Breed,
-		Item,
-		Special
-	}
+    public enum MoveEarnType
+    {
+        Unknown,
+        LevelUp,
+        Breed,
+        Item,
+        Special
+    }
 }
-
