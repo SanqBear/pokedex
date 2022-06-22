@@ -46,5 +46,8 @@ namespace Pokedex.Model.Definitions
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public IList<Move>? Moves { get; set; } = null;
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? EvolveCondition { get; set; } = null;
     }
 }
