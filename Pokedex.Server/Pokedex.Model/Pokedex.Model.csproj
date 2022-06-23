@@ -14,7 +14,6 @@
     <None Remove="System.Data.SqlClient" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Definitions\" />
     <Folder Include="Resources\" />
     <Folder Include="Utils\" />
     <Folder Include="Repositories\" />

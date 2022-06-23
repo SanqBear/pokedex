@@ -1,4 +1,5 @@
 ﻿using Pokedex.Model.Utils;
+using System.Text.Json.Serialization;
 
 namespace Pokedex.Model.Definitions
 {
@@ -27,10 +28,13 @@ namespace Pokedex.Model.Definitions
             }
         }
 
+        [JsonPropertyName("ko")]
         public string Korean { get; private set; }
 
+        [JsonPropertyName("en")]
         public string English { get; private set; }
 
+        [JsonPropertyName("jp")]
         public string Japanese { get; private set; }
     }
 }

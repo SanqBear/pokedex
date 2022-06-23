@@ -24,16 +24,8 @@ namespace Pokedex.Model.Definitions
             }
         }
 
-        private string _type = string.Empty;
-
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public LanguageResource? Type
-        {
-            get
-            {
-                return !string.IsNullOrWhiteSpace(_type) ? new LanguageResource(_type) : null;
-            }
-        }
+        public IList<LanguageResource>? Types { get; set; } = null;
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public IList<Attribute>? Attributes { get; set; } = null;
