@@ -1,18 +1,25 @@
-﻿namespace Pokedex.Model.Utils
-{
-    public class LanguageManager
-    {
-        private static Lazy<LanguageManager> _instance = new Lazy<LanguageManager>(() => new LanguageManager());
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-        public const string Korean = "koKR";
-        public const string English = "enUS";
-        public const string Japanese = "jaJP";
+namespace Pokedex.Components.Utils
+{
+    public class LanguageCache
+    {
+        private static Lazy<LanguageCache> _instance = new Lazy<LanguageCache>(() => new LanguageCache());
+
+        public const string KOREAN_CODE = "koKR";
+        public const string ENGLISH_CODE = "enUS";
+        public const string JAPANESE_CODE = "jaJP";
+        public const string JAPKOREAN_CODE = "koJP";
 
         public static IReadOnlyDictionary<string, Dictionary<string, string>> Dictionary { get; set; } = new Dictionary<string, Dictionary<string, string>>();
-        public static LanguageManager Instance => _instance.Value;
+        public static LanguageCache Instance => _instance.Value;
         public bool IsLoaded => Dictionary.Any();
 
-        private LanguageManager()
+        private LanguageCache()
         {
         }
 
@@ -30,19 +37,24 @@
             Dictionary = new Dictionary<string, Dictionary<string, string>>(System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(jsonContent) ?? new Dictionary<string, Dictionary<string, string>>(), StringComparer.OrdinalIgnoreCase);
         }
 
-        public string koKR(string keyCode, params string[] replacements)
+        public string Korean(string keyCode, params string[] replacements)
         {
-            return Get(keyCode, Korean, replacements);
+            return Get(keyCode, KOREAN_CODE, replacements);
         }
 
-        public string enUS(string keyCode, params string[] replacements)
+        public string English(string keyCode, params string[] replacements)
         {
-            return Get(keyCode, English, replacements);
+            return Get(keyCode, ENGLISH_CODE, replacements);
         }
 
-        public string jaJP(string keyCode, params string[] replacements)
+        public string Japanese(string keyCode, params string[] replacements)
         {
-            return Get(keyCode, Japanese, replacements);
+            return Get(keyCode, JAPANESE_CODE, replacements);
+        }
+
+        public string JapanesePron(string keyCode, params string[] replacements)
+        {
+            return Get(keyCode, JAPKOREAN_CODE, replacements);
         }
 
         public string Get(string keyCode, string langCode, params string[] replacements)
