@@ -1,10 +1,5 @@
 ﻿using Pokedex.Components.Resources;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace Pokedex.Components.Definitions
 {
@@ -15,8 +10,8 @@ namespace Pokedex.Components.Definitions
         /// </summary>
         /// <param name="id">id</param>
         /// <param name="version">버전 (optional)</param>
-        public Ability(string id, string version = "") 
-        { 
+        public Ability(string id, string version = "")
+        {
             Id = id;
             Version = !string.IsNullOrWhiteSpace(version) ? version : null;
         }
@@ -47,7 +42,7 @@ namespace Pokedex.Components.Definitions
         /// 특성 설명
         /// </summary>
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public LanguageModel? Description => UseDescription ? new LanguageModel($"{Id}_{Constants.SURFIX_DESC}") : null;
+        public LanguageModel? Description => UseDescription ? new LanguageModel($"{Id}_{Version}_{Constants.SURFIX_DESC}") : null;
 
         /// <summary>
         /// 숨겨진 특성 여부

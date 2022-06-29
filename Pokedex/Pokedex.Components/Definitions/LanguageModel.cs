@@ -16,6 +16,7 @@ namespace Pokedex.Components.Definitions
                 English = LanguageCache.Instance.English(keyCode, replacement);
                 Japanese = LanguageCache.Instance.Japanese(keyCode, replacement);
                 JapanesePron = LanguageCache.Instance.JapanesePron(keyCode, replacement);
+                if (string.IsNullOrEmpty(JapanesePron)) JapanesePron = null;
             }
         }
 
@@ -24,19 +25,32 @@ namespace Pokedex.Components.Definitions
             Korean = korean;
             English = english;
             Japanese = japanese;
-            JapanesePron= pron;
+            JapanesePron = pron;
         }
 
+        /// <summary>
+        /// 한국어
+        /// </summary>
         [JsonPropertyName("ko")]
         public string Korean { get; set; } = string.Empty;
 
+        /// <summary>
+        /// 영어
+        /// </summary>
         [JsonPropertyName("en")]
         public string English { get; set; } = string.Empty;
 
+        /// <summary>
+        /// 일본어
+        /// </summary>
         [JsonPropertyName("jp")]
         public string Japanese { get; set; } = string.Empty;
 
+        /// <summary>
+        /// 일본어의 한국어 음차
+        /// </summary>
         [JsonPropertyName("jpv")]
-        public string JapanesePron { get; set; } = string.Empty;
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? JapanesePron { get; set; } = null;
     }
 }
